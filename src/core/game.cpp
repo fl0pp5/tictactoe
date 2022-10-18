@@ -11,7 +11,7 @@ Game& Game::at(std::uint8_t pos, CellType type) noexcept
     return *this;
 }
 
-CellType Game::winner()
+CellType Game::winner() noexcept
 {
     for (const auto &pattern : _win_patterns) {
         std::size_t i        = 0,
@@ -31,4 +31,8 @@ CellType Game::winner()
         }
     }
     return CellType::Empty;
+}
+
+ttt_field_t& Game::field() noexcept {
+    return _field;
 }

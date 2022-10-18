@@ -42,7 +42,8 @@ public:
 
     Game& at(std::uint8_t pos, CellType type) noexcept;
     CellType at(std::uint8_t pos) const noexcept;
-    CellType winner();
+    CellType winner() noexcept;
+    ttt_field_t& field() noexcept;
 
     Game(const Game& _) = delete;
     Game(Game&& _) = delete;
