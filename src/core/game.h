@@ -9,7 +9,7 @@ enum class CellType
     Empty, Cross, Zero
 };
 
-typedef std::array<CellType, 3> ttt_field_t;
+typedef std::array<CellType, 9> ttt_field_t;
 
 class Game
 {;
