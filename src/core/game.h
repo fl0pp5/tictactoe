@@ -4,12 +4,12 @@
 #include <iostream>
 #include <array>
 
-#define FIELD_SIZE 9
-
 enum class CellType
 {
     Empty, Cross, Zero
 };
+
+typedef std::array<CellType, 3> ttt_field_t;
 
 class Game
 {;
@@ -35,8 +35,7 @@ class Game
                 {2, 4, 6}
             }};
 
-    std::array<CellType, FIELD_SIZE> _field{};
-
+    ttt_field_t _field{};
 
 public:
     Game() = default;
