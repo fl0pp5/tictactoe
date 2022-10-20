@@ -4,12 +4,8 @@
 #include <iostream>
 #include <array>
 
-enum class CellType
-{
-    Empty, Cross, Zero
-};
-
-typedef std::array<CellType, 9> ttt_field_t;
+#include "player.h"
+#include "types.h"
 
 class Game
 {;
@@ -37,12 +33,22 @@ class Game
 
     ttt_field_t _field{};
 
+    typedef std::array<Player, 2> _players_t;
+
+    _players_t _players {
+        Player(0, CellType::Cross),
+        Player(1, CellType::Zero)
+    };
+    _players_t::iterator _current {_players.begin()};
+
 public:
     Game() = default;
 
     Game& at(std::uint8_t pos, CellType type) noexcept;
     CellType at(std::uint8_t pos) const noexcept;
     CellType winner() noexcept;
+    Game& move(std::uint8_t pos) noexcept;
+    Game& fill() noexcept;
     ttt_field_t& field() noexcept;
 
     Game(const Game& _) = delete;
