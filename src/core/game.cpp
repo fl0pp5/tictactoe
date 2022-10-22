@@ -60,3 +60,11 @@ Game& Game::fill() noexcept
     return *this;
 }
 
+Player& Game::player1() noexcept {
+    return *_players.begin();
+}
+
+Player& Game::player2() noexcept {
+    return *(_players.end() - 1);
+}
+

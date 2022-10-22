@@ -50,6 +50,8 @@ public:
     Game& move(std::uint8_t pos) noexcept;
     Game& fill() noexcept;
     ttt_field_t& field() noexcept;
+    Player& player1() noexcept;
+    Player& player2() noexcept;
 
     Game(const Game& _) = delete;
     Game(Game&& _) = delete;
