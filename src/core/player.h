@@ -8,8 +8,6 @@
 
 class Player
 {
-    std::uint8_t _pos;
-    CellType     _cell;
 public:
     Player(std::uint8_t pos, CellType cell)
             : _pos(pos), _cell(cell) {}
@@ -23,6 +21,10 @@ public:
     Player(const Player& _) = delete;
     Player& operator=(const Player& _) = delete;
     Player& operator=(Player&& _) = delete;
+
+private:
+    std::uint8_t _pos;
+    CellType     _cell;
 };
 
 

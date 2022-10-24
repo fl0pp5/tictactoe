@@ -9,6 +9,27 @@
 
 class Game
 {;
+public:
+    Game() = default;
+
+    Game& at(std::uint8_t pos, CellType type) noexcept;
+    CellType at(std::uint8_t pos) const noexcept;
+    CellType winner() noexcept;
+    Game& fill() noexcept;
+    Player& player1() noexcept;
+    Player& player2() noexcept;
+    ttt_field_t::size_type field_size() const noexcept;
+    const Player* current() const noexcept;
+    std::uint8_t compute_pos(const Player& player, int cur_pos, int shift) const noexcept;
+    std::uint8_t height() const noexcept;
+    std::uint8_t width() const noexcept;
+
+    Game(const Game& _) = delete;
+    Game(Game&& _) = delete;
+    Game& operator=(const Game& _) = delete;
+    Game& operator=(Game&& _) = delete;
+
+private:
     /*
      * 0 1 2
      * 3 4 5
@@ -40,23 +61,6 @@ class Game
         Player(1, CellType::Zero)
     };
     _players_t::iterator _current {_players.begin()};
-
-public:
-    Game() = default;
-
-    Game& at(std::uint8_t pos, CellType type) noexcept;
-    CellType at(std::uint8_t pos) const noexcept;
-    CellType winner() noexcept;
-    Game& move(std::uint8_t pos) noexcept;
-    Game& fill() noexcept;
-    ttt_field_t& field() noexcept;
-    Player& player1() noexcept;
-    Player& player2() noexcept;
-
-    Game(const Game& _) = delete;
-    Game(Game&& _) = delete;
-    Game& operator=(const Game& _) = delete;
-    Game& operator=(Game&& _) = delete;
 };
 
 

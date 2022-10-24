@@ -33,18 +33,6 @@ CellType Game::winner() noexcept
     return CellType::Empty;
 }
 
-ttt_field_t& Game::field() noexcept
-{
-    return _field;
-}
-
-Game& Game::move(std::uint8_t pos) noexcept
-{
-    _current->set_pos(pos);
-
-    return *this;
-}
-
 Game& Game::fill() noexcept
 {
     if (at(_current->pos()) != CellType::Empty) {
@@ -60,11 +48,38 @@ Game& Game::fill() noexcept
     return *this;
 }
 
-Player& Game::player1() noexcept {
+Player& Game::player1() noexcept
+{
     return *_players.begin();
 }
 
-Player& Game::player2() noexcept {
+Player& Game::player2() noexcept
+{
     return *(_players.end() - 1);
+}
+
+ttt_field_t::size_type Game::field_size() const noexcept
+{
+    return _field.size();
+}
+
+const Player* Game::current() const noexcept {
+    return _current;
+}
+
+std::uint8_t Game::compute_pos(const Player &player, int cur_pos, int shift) const noexcept
+{
+    return abs(cur_pos + shift) % field_size();
+}
+
+std::uint8_t Game::height() const noexcept
+{
+    return field_size() / 3;
+}
+
+
+std::uint8_t Game::width() const noexcept
+{
+    return field_size() / 3;
 }
 
